@@ -1,0 +1,36 @@
+meta {
+  name: Login
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://{{ACCESS_POINT_IP}}/?username=admin&password={{HASH_PASSWORD}}
+  body: none
+  auth: inherit
+}
+
+params:query {
+  username: admin
+  password: {{HASH_PASSWORD}}
+}
+
+headers {
+  Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+  Host: 192.168.0.4
+  Origin: https://192.168.0.4
+  Referer: https://192.168.0.4/logout.html
+  Accept: application/json, text/javascript, */*; q=0.01
+  Set-Fetch-Mode: cors
+  Set-Fetch-Site: same-origin
+  X-Requested-With: XMLHttpRequest
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+  Connection: keep-alive
+  Set-Fetch-Dest: empty
+  Accept-Encoding: gzip, deflate, br, zstd
+  Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+}
+
+docs {
+  This request must be executed first to retrieve a session cookie.
+}

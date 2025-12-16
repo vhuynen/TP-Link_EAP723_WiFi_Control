@@ -1,0 +1,15 @@
+meta {
+  name: Logout
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://{{ACCESS_POINT_IP}}/logout.html
+  body: none
+  auth: inherit
+}
+
+docs {
+  This call is used to terminate the session with the Access Point.
+}

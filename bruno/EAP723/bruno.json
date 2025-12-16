@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "EAP723",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

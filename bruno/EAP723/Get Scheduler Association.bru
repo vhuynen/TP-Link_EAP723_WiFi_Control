@@ -1,0 +1,83 @@
+meta {
+  name: Get Scheduler Association
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://{{ACCESS_POINT_IP}}/data/scheduler.association.json?operation=load
+  body: none
+  auth: inherit
+}
+
+params:query {
+  operation: load
+}
+
+headers {
+  Accept: application/json, text/javascript, */*; q=0.01
+  Accept-Encoding: gzip, deflate, br, zstd
+  Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+  Connection: keep-alive
+  Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+  Host: {{ACCESS_POINT_IP}}
+  Origin: https://{{ACCESS_POINT_IP}}
+  Referer: https://{{ACCESS_POINT_IP}}/
+  Set-Fetch-Dest: empty
+  Set-Fetch-Mode: cors
+  Set-Fetch-Site: same-origin
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+  X-Requested-With: XMLHttpRequest
+}
+
+docs {
+  This request retrieves the state of the objects that will be modified in the Wi-Fi activation request. The JSON response is as follows:
+  
+  {
+    "success": true,
+    "timeout": false,
+    "error": 0,
+    "data": [
+      {
+        "ssid": "Wi-Fi-Private",
+        "band": "5GHz",
+        "profileName": "++++",
+        "profileId": -1,
+        "action": 0,
+        "ml": 0
+      },
+      {
+        "ssid": "Wi-Fi-IoT",
+        "band": "2.4GHz",
+        "profileName": "++++",
+        "profileId": -1,
+        "action": 0,
+        "ml": 0
+      },
+      {
+        "ssid": "Wi-Fi-Guest",
+        "band": "5GHz",
+        "profileName": "WiFi-Control",
+        "profileId": 2,
+        "action": 0,
+        "ml": 0
+      },
+      {
+        "ssid": "Wi-Fi-Private",
+        "band": "2.4GHz",
+        "profileName": "WiFi-Control",
+        "profileId": 2,
+        "action": 0,
+        "ml": 0
+      }
+    ]
+  }
+  
+  The WiFi-Control profile is a configuration where the rule is valid 24/7, 365 days a year.
+  Activation is controlled by the action attribute:
+  
+  0 : off
+  1 : on
+  
+  
+}

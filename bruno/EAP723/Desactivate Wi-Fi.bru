@@ -1,0 +1,32 @@
+meta {
+  name: Desactivate Wi-Fi
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://{{ACCESS_POINT_IP}}/data/scheduler.association.json?operation=save&ssid=Wi-Fi-Private%0AWi-Fi-IoT%0AWi-Fi-Guest%0AWi-Fi-Private&band=5GHz%0A2.4GHz%0A5GHz%0A2.4GHz&ml=0%0A0%0A0%0A0&profile=%2B%2B%2B%2B%0A%2B%2B%2B%2B%0AWiFi-Control%0AWiFi-Control&action=0%0A0%0A0%0A0
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json, text/javascript, */*; q=0.01
+  Accept-Encoding: gzip, deflate, br, zstd
+  Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+  Connection: keep-alive
+  Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+  Host: {{ACCESS_POINT_IP}}
+  Origin: https://{{ACCESS_POINT_IP}}
+  Referer: https://{{ACCESS_POINT_IP}}/
+  Set-Fetch-Dest: empty
+  Set-Fetch-Mode: cors
+  Set-Fetch-Site: same-origin
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+  X-Requested-With: XMLHttpRequest
+}
+
+docs {
+  This request disables the Wi-Fi channel for the SSID Wi-Fi-Guest on the 5GHz band.
+  The action attribute is set to 0 (off). 
+}

@@ -1,0 +1,43 @@
+meta {
+  name: Activate Wi-Fi
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://{{ACCESS_POINT_IP}}/data/scheduler.association.json?operation=save&ssid=Wi-Fi-Private%0AWi-Fi-IoT%0AWi-Fi-Guest%0AWi-Fi-Private&band=5GHz%0A2.4GHz%0A5GHz%0A2.4GHz&ml=0%0A0%0A0%0A0&profile=%2B%2B%2B%2B%0A%2B%2B%2B%2B%0AWiFi-Control%0AWiFi-Control&action=0%0A0%0A1%0A0
+  body: none
+  auth: inherit
+}
+
+headers {
+  Accept: application/json, text/javascript, */*; q=0.01
+  Accept-Encoding: gzip, deflate, br, zstd
+  Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+  Connection: keep-alive
+  Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+  Host: {{ACCESS_POINT_IP}}
+  Origin: https://{{ACCESS_POINT_IP}}
+  Referer: https://{{ACCESS_POINT_IP}}/
+  Set-Fetch-Dest: empty
+  Set-Fetch-Mode: cors
+  Set-Fetch-Site: same-origin
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36
+  X-Requested-With: XMLHttpRequest
+}
+
+docs {
+  This request is used to save the state of the scheduler association between Wi-Fi channels and the scheduler profile "WiFi-Control". The attributes ssid, band, profileName, profileId, action, and ml are returned in a column-style array, with carriage returns (%0A) separating each value of the same attribute.
+  Example :
+  
+  ssid=Wi-Fi-Private%0AWi-Fi-IoT%0AWi-Fi-Guest%0AWi-Fi-Private
+  
+  The order must be preserved across all attributes. For instance:
+  band=5GHz%0A2.4GHz%0A5GHz%0A2.4GHz
+  
+  This means that the first ssid (Wi-Fi-Private) in the list corresponds to the first band (5GHz), and so on for each attribute in sequence.
+  
+  Finally, This request enables the Wi-Fi channel for the SSID Wi-Fi-Guest on the 5GHz band.
+  The action attribute is set to 1 (on). 
+  
+}
