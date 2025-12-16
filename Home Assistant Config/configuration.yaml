@@ -1,0 +1,11 @@
+script: !include scripts.yaml
+template: !include template.yaml
+shell_command: !include shell-command.yaml
+
+#-----------------input boolean-----------------
+input_boolean:
+  eap723_wi_fi_guest_5ghz_status:
+    name: Statut Wi-Fi Guest 5GHz EAP723
+    icon: mdi:wifi-marker
+  eap723_wi_fi_private_2g4hz_status:
+    name: Statut Wi-Fi Private 2G4Hz EAP723

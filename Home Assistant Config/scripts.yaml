@@ -1,0 +1,28 @@
+eap723_wifi_control:
+  description: "Control Wi-Fi EAP723 dynamically"
+  fields:
+    target_ssid:
+      description: "Target SSID"
+      example: "Wi-Fi-Guest, Wi-Fi-Private"
+    target_band:
+      description: "Target Band Frequency"
+      example: "5GHz, 2.4GHz"
+    entity_jocker:
+      description: "Input Boolean Entity Jocker"
+      example: "wifi_guest_5ghz, wifi_private_2g4hz"
+    state:
+      description: "Wi-Fi state (on/off)"
+      example: "on"
+  sequence:
+    - service: shell_command.eap723_wifi_control
+      data:
+        host: !secret host_eap723
+        user: "admin"
+        pass_hash: !secret pass_hash_eap723
+        target_ssid: "{{ target_ssid }}"
+        target_band: "{{ target_band }}"
+        state: "{{ state }}"
+    - service: "input_boolean.turn_{{ state }}" 
+      target:
+        entity_id: "input_boolean.eap723_{{ entity_jocker }}_status"
+  mode: queued

@@ -1,0 +1,2 @@
+# eap723 Wi-Fi Control
+eap723_wifi_control: "bash -c '/config/eap723_wifi_control.py {{ host }} {{ user }} {{ pass_hash }} {{ target_ssid }} {{ target_band }} {{ state }}'"
